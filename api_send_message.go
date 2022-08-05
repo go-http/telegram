@@ -7,9 +7,9 @@ import (
 	"strconv"
 )
 
-func (r *Robot) SendMessage(chatId int, text string) error {
+func (r *Robot) SendMessage(chatId int64, text string) error {
 	param := url.Values{
-		"chat_id": {strconv.Itoa(chatId)},
+		"chat_id": {strconv.FormatInt(chatId, 10)},
 		"text":    {text},
 	}
 	resp, err := http.PostForm(r.apiUrl+"sendMessage", param)
